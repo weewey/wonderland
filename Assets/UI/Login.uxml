@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="-unity-text-align: middle-center; background-image: url(&apos;/Assets/Art/backgroundForest.png&apos;); flex-grow: 1; justify-content: center; align-items: stretch; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+        <ui:Label display-tooltip-when-elided="true" name="login-status-label" style="font-size: 50px;" />
+        <ui:TextField picking-mode="Ignore" text="Wallet Public Key" name="wallet-public-key-input" multiline="false" style="font-size: 50px;" />
+        <ui:Button text="Join Game" display-tooltip-when-elided="true" name="join-game-btn" style="font-size: 50px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,24 @@
+{
+    "name": "Wonderland",
+    "rootNamespace": "",
+    "references": [
+        "unity.allart.solana_wallet",
+        "PlayFab",
+        "PhotonChat",
+        "PhotonRealtime",
+        "PhotonUnityNetworking",
+        "Unity.TextMeshPro",
+        "UnityEngine.UIElementsModule",
+        "UnityEngine.UIElementsInputSystemModule",
+        "Opsive.UltimateCharacterController.AddOns.Multiplayer.PhotonPUN"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
