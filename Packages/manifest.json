@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.allart.solana_wallet": "file:/Users/yewwee/unity/unity-solana-wallet",
+    "com.allart.solana_wallet": "file:/Users/varick/dev/unity-solana-wallet",
     "com.unity.addressables": "1.18.19",
     "com.unity.device-simulator": "3.0.3-preview",
     "com.unity.ide.rider": "2.0.7",

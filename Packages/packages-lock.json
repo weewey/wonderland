@@ -1,10 +1,12 @@
 {
   "dependencies": {
     "com.allart.solana_wallet": {
-      "version": "file:/Users/yewwee/unity/unity-solana-wallet",
+      "version": "file:/Users/varick/dev/unity-solana-wallet",
       "depth": 0,
       "source": "local",
-      "dependencies": {}
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0"
+      }
     },
     "com.unity.addressables": {
       "version": "1.18.19",
@@ -45,6 +47,13 @@
     },
     "com.unity.mathematics": {
       "version": "1.1.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "2.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

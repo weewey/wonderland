@@ -62,7 +62,7 @@ public class Lobby : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel(Constants.CityScene);
+        PhotonNetwork.LoadLevel(Constants.ConcertScene);
         _lobbyStatusLabel.text = "Connected to a room. Loading the level.";
     }
 }
