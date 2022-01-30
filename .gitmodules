@@ -1,0 +1,3 @@
+[submodule "unity-solana-wallet"]
+	path = unity-solana-wallet
+	url = git@github.com:allartprotocol/unity-solana-wallet.git
