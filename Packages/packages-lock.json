@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.allart.solana_wallet": {
-      "version": "file:/Users/varick/dev/unity-solana-wallet",
+      "version": "file:../unity-solana-wallet",
       "depth": 0,
       "source": "local",
       "dependencies": {
