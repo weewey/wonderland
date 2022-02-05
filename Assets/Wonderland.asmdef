@@ -10,7 +10,9 @@
         "Unity.TextMeshPro",
         "UnityEngine.UIElementsModule",
         "UnityEngine.UIElementsInputSystemModule",
-        "Opsive.UltimateCharacterController.AddOns.Multiplayer.PhotonPUN"
+        "Opsive.UltimateCharacterController.AddOns.Multiplayer.PhotonPUN",
+        "Opsive.UltimateCharacterController",
+        "Opsive.Shared"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
