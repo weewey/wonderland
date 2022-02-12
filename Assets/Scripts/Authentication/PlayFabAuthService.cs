@@ -20,6 +20,7 @@ namespace Authentication
         public GetPlayerCombinedInfoRequestParams InfoRequestParams;
 
         private string _playFabId;
+        private string _walletAddress;
 
         public static PlayFabAuthService Instance
         {
@@ -43,6 +44,7 @@ namespace Authentication
 
         public void Authenticate(string customId)
         {
+            _walletAddress = customId;
             LoginWithCustomId(customId,
                 result =>
                 {
@@ -51,6 +53,11 @@ namespace Authentication
                         ErrorLoginCallback(null));
                 }
             );
+        }
+
+        public string GetWalletAddress()
+        {
+            return _walletAddress;
         }
 
         private void RequestPhotonToken(

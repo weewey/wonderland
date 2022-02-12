@@ -8532,7 +8532,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 506798162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 415b3d8c1fee0ae4ba61072d3b9f04dc, type: 3}
+  m_Script: {fileID: 11500000, guid: c974494fd36bc425898c2b0cfa73e2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Mode: 0
@@ -8540,7 +8540,8 @@ MonoBehaviour:
   m_SpawnLocationOffset: {x: 0, y: 10, z: 0}
   m_SpawnPointGrouping: 0
   m_InactiveTimeout: 60
-  m_Character: {fileID: 7844431507054156063, guid: f59e4f1ef1b5b41b6802bad4d985a64c, type: 3}
+  m_Character1: {fileID: 7844431507054156063, guid: f59e4f1ef1b5b41b6802bad4d985a64c, type: 3}
+  m_Character2: {fileID: 2484489155887488701, guid: d7b646de989bb4d6e89de0e06601ab3e, type: 3}
 --- !u!114 &506798168
 MonoBehaviour:
   m_ObjectHideFlags: 0
