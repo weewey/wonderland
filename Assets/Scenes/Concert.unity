@@ -8542,6 +8542,8 @@ MonoBehaviour:
   m_InactiveTimeout: 60
   m_Character1: {fileID: 7844431507054156063, guid: f59e4f1ef1b5b41b6802bad4d985a64c, type: 3}
   m_Character2: {fileID: 2484489155887488701, guid: d7b646de989bb4d6e89de0e06601ab3e, type: 3}
+  m_Character3: {fileID: 915982515118307571, guid: c0da08f0914604e569d80d19d5be8001, type: 3}
+  m_Character4: {fileID: 161682747997805714, guid: a8e39b6ec0a204418bdb9cab2033f8a9, type: 3}
 --- !u!114 &506798168
 MonoBehaviour:
   m_ObjectHideFlags: 0
