@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-  public GameObject StatsPanel;
-  public GameObject StatsButton;
+    public GameObject StatsPanel;
+    public GameObject StatsButton;
 
-  public void OpenPanel()
-  {
-    // print("Open panel");
-    if (StatsPanel != null) {
-      StatsPanel.SetActive(true);
-      if (StatsButton != null) {
-        StatsButton.SetActive(false);
-      }
+    public void OpenPanel()
+    {
+        if (StatsPanel != null)
+        {
+            StatsPanel.SetActive(true);
+            if (StatsButton != null)
+            {
+                StatsButton.SetActive(false);
+            }
+        }
     }
-  }
 
-  public void ClosePanel()
-  {
-    // print("Close panel");
-    if (StatsPanel != null) {
-      StatsPanel.SetActive(false);
-      if (StatsButton != null) {
-        StatsButton.SetActive(true);
-      }
+    public void ClosePanel()
+    {
+        if (StatsPanel != null)
+        {
+            StatsPanel.SetActive(false);
+            if (StatsButton != null)
+            {
+                StatsButton.SetActive(true);
+            }
+        }
     }
-  }
 }
