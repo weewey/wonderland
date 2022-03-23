@@ -52,6 +52,7 @@ namespace Authentication
         private async Task<bool> WalletExists()
         {
             var accountInfo = await AccountUtility.GetAccountData(_walletPublicKeyInput.value, _rpcClient);
+            Debug.Log(accountInfo);
             return accountInfo != null;
         }
 
