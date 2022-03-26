@@ -1,5 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
+using Authentication;
+using Controllers;
 using ExitGames.Client.Photon;
 using Opsive.Shared.Events;
 using Photon.Chat;
@@ -15,14 +17,16 @@ public class PhotonChatController : MonoBehaviour, IChatClientListener
     [SerializeField] public TMP_InputField chatInput;
     [SerializeField] public string roomChannel;
     private ChatClient _chatClient;
+    private HttpClient _httpClient;
     private Dictionary<string, GameObject> _userCharacters = new Dictionary<string, GameObject>();
 
     private void Awake()
     {
         Debug.Log("chat awake");
         EventHandler.RegisterEvent<Player, GameObject>("OnPlayerEnteredRoom", OnPlayerEnteredRoom);
-        // EventHandler.RegisterEvent<Player, GameObject>("OnPlayerLeftRoom", OnPlayerLeftRoom);
+        EventHandler.RegisterEvent<Player, GameObject>("OnPlayerLeftRoom", OnPlayerLeftRoom);
         chatInput.onEndEdit.AddListener(PublishMessage);
+        _httpClient = new HttpClient(new JsonSerializationOption());
     }
 
     void Start()
@@ -43,19 +47,11 @@ public class PhotonChatController : MonoBehaviour, IChatClientListener
                 {
                     Debug.Log($"Get player controller {view.Controller.UserId}");
                 }
+
                 if (view.Owner != null)
                 {
                     Debug.Log($"Get player owner {view.Owner.UserId}");
                 }
-
-                // if (_userCharacters.ContainsKey(player.UserId))
-                // {
-                //     _userCharacters[player.UserId] = view.gameObject;
-                // }
-                // else
-                // {
-                //     _userCharacters.Add(player.UserId, view.gameObject);
-                // }
             }
         }
     }
@@ -137,6 +133,21 @@ public class PhotonChatController : MonoBehaviour, IChatClientListener
             new Vector3(0, 2, 0),
             message);
         chatInput.text = "";
+
+        if (MessageHelper.IsPrivateMessage(message))
+        {
+            Debug.Log("private message");
+             IncrementSocial();
+        }
+    }
+
+    private async Task IncrementSocial()
+    {
+        string pubKey = SocialIndexController.GetCharacterPlayerInfo(PlayFabAuthService.Instance.GetWalletAddress())
+            .CharAddr;
+        string result = await _httpClient.Post("https://underland-wonderland.herokuapp.com/increment-social",
+            new IncrementSocialRequest(pubKey, 5));
+        Debug.Log(result);
     }
 
     public void OnChatStateChange(ChatState state)
@@ -147,9 +158,6 @@ public class PhotonChatController : MonoBehaviour, IChatClientListener
     {
         for (int i = 0; i < senders.Length; i++)
         {
-            Debug.Log($"Received Senders {senders[i]}");
-            Debug.Log($"Message received: {messages[i]}");
-
             if (senders[i] == PhotonNetwork.LocalPlayer.UserId) continue;
 
 

@@ -1,44 +1,75 @@
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace DefaultNamespace
+public class HttpClient
 {
-    public class HttpClient
+    private readonly ISerializationOption _serializationOption;
+
+    public HttpClient(ISerializationOption serializationOption)
     {
-        private readonly ISerializationOption _serializationOption;
+        _serializationOption = serializationOption;
+    }
 
-        public HttpClient(ISerializationOption serializationOption)
+    public async Task<TResultType> Get<TResultType>(string url)
+    {
+        try
         {
-            _serializationOption = serializationOption;
+            using var www = UnityWebRequest.Get(url);
+
+            www.SetRequestHeader("Content-Type", _serializationOption.ContentType);
+
+            var operation = www.SendWebRequest();
+
+            while (!operation.isDone)
+                await Task.Yield();
+
+            if (www.result != UnityWebRequest.Result.Success)
+                Debug.LogError($"Failed: {www.error}");
+
+            var result = _serializationOption.Deserialize<TResultType>(www.downloadHandler.text);
+
+            return result;
         }
-
-        public async Task<TResultType> Get<TResultType>(string url)
+        catch (Exception ex)
         {
-            try
-            {
-                using var www = UnityWebRequest.Get(url);
+            Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
+            return default;
+        }
+    }
 
-                www.SetRequestHeader("Content-Type", _serializationOption.ContentType);
+    public async Task<string> Post<TRequestType>(string url, TRequestType postData)
+    {
+        try
+        {
+            var request = new UnityWebRequest(url, "POST");
+            
+            string json = JsonUtility.ToJson(postData);
+            
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+            
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            
+            request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+            
+            request.SetRequestHeader("Content-Type", "application/json");
 
-                var operation = www.SendWebRequest();
+            var operation = request.SendWebRequest();
+            
+            while (!operation.isDone)
+                await Task.Yield();
 
-                while (!operation.isDone)
-                    await Task.Yield();
+            if (request.result != UnityWebRequest.Result.Success)
+                Debug.LogError($"Failed: {request.error}");
 
-                if (www.result != UnityWebRequest.Result.Success)
-                    Debug.LogError($"Failed: {www.error}");
-
-                var result = _serializationOption.Deserialize<TResultType>(www.downloadHandler.text);
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
-                return default;
-            }
+            return request.downloadHandler.text;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"{nameof(Post)} failed: {ex.Message}");
+            return default;
         }
     }
 }
