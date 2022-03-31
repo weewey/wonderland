@@ -7,7 +7,8 @@ public class Constants
     public static String CityScene = "City";
     public static String LobbyScene = "Lobby";
     public static String ConcertScene = "Concert";
-    
+    public static String JapanScene = "Japan";
+
     public static String Daryl = "Daryl";
     public static String Varick = "Varick";
     public static String Zavier = "Zavier";

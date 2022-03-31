@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Concert.unity
     guid: e1a2fcd8f4db944f38d59164abda8f09
+  - enabled: 1
+    path: Assets/Scenes/Japan.unity
+    guid: e2df72ee8aec24225a27bbd5a229f4d1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c89fced3011944332ba737a080210251, type: 2}
